@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId> <!-- Replace with your group ID -->
+    <artifactId>tictactoe</artifactId> <!-- Project name -->
+    <version>1.0-SNAPSHOT</version> <!-- Project version -->
+
+    <packaging>jar</packaging> <!-- Packaging type -->
+
+    <name>Tic Tac Toe Project</name> <!-- Project name -->
+
+    <!-- Java build plugin -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version> <!-- Check for the latest version -->
+                <configuration>
+                    <source>11</source> <!-- Java version -->
+                    <target>11</target> <!-- Java version -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Project dependencies -->
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId> <!-- JUnit dependency for testing -->
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version> <!-- Adjust according to your JUnit needs -->
+            <scope>test</scope> <!-- Only required during testing -->
+        </dependency>
+    </dependencies>
+</project>
