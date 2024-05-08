@@ -1,0 +1,36 @@
+name: Build and Test
+
+# Define when the workflow should run
+on:
+  push:  # Run workflow on code push
+    branches:
+      - main  # Define the branch to watch
+  pull_request:  # Run workflow on pull requests
+    branches:
+      - main  # Define the branch to watch
+
+# Define the jobs in the workflow
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+
+    # Define the steps in this job
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3  # GitHub's official checkout action
+
+      # Set up Java
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'  # JDK distribution
+          java-version: '11'  # Adjust to your required Java version
+
+      # Build the project with Maven
+      - name: Build with Maven
+        run: mvn clean install  # Clean previous build artifacts and build the project
+
+      # Run tests with Maven
+      - name: Test with Maven
+        run: mvn test  # Run the project's tests
