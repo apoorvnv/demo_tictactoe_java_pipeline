@@ -1,0 +1,24 @@
+# Maven build output directory
+target/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+
+# Eclipse files
+.classpath
+.project
+
+# NetBeans files
+/nbproject/
+
+# Compiled Java files
+*.class
+
+# Temporary files
+*.log
+*.tmp
+.DS_Store
+
+# Operating system files (e.g., macOS)
+.DS_Store
