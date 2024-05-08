@@ -34,3 +34,23 @@ jobs:
       # Run tests with Maven
       - name: Test with Maven
         run: mvn test  # Run the project's tests
+
+  deploy:
+    needs: build_and_test  # Run this job only after build_and_test is successful
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Deploy to a server via SSH (example deployment step)
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1  # SSH action for deployment
+        with:
+          host: ${{ secrets.SSH_HOST }}  # GitHub Secrets to store sensitive information
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |  # Deployment script to run on the server
+            echo "Deploying Tic Tac Toe"
+            # Example command: Copy JAR to server and start it
