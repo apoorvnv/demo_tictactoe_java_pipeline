@@ -25,7 +25,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'  # JDK distribution
-          java-version: '11'  # Adjust to your required Java version
+          java-version: '17'  # Adjust to your required Java version
 
       # Build the project with Maven
       - name: Build with Maven
