@@ -13,6 +13,7 @@
 
     <!-- Java build plugin -->
     <build>
+        <!-- Encoding for Java source compilation -->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -25,6 +26,25 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <!-- Encoding for resource processing -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>  <!-- Main resources directory -->
+                <filtering>true</filtering>  <!-- Enable filtering if needed -->
+                <encoding>UTF-8</encoding>  <!-- Set encoding for resource processing -->
+            </resource>
+        </resources>
+
+        <!-- Encoding for test resource processing -->
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>  <!-- Test resources directory -->
+                <filtering>true</filtering>  <!-- Enable filtering if needed -->
+                <encoding>UTF-8</encoding>  <!-- Set encoding for test resource processing -->
+            </testResource>
+        </testResources>
+        
     </build>
 
     <!-- Project dependencies -->
