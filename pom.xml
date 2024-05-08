@@ -21,6 +21,7 @@
                 <configuration>
                     <source>11</source> <!-- Java version -->
                     <target>11</target> <!-- Java version -->
+                    <encoding>UTF-8</encoding>  <!-- Set the encoding explicitly -->
                 </configuration>
             </plugin>
         </plugins>
