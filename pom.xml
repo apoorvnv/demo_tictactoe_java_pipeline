@@ -13,38 +13,35 @@
 
     <!-- Java build plugin -->
     <build>
-        <!-- Encoding for Java source compilation -->
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version> <!-- Check for the latest version -->
-                <configuration>
-                    <source>11</source> <!-- Java version -->
-                    <target>11</target> <!-- Java version -->
-                    <encoding>UTF-8</encoding>  <!-- Set the encoding explicitly -->
-                </configuration>
-            </plugin>
-        </plugins>
-
-        <!-- Encoding for resource processing -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>  <!-- Main resources directory -->
                 <filtering>true</filtering>  <!-- Enable filtering if needed -->
-                <encoding>UTF-8</encoding>  <!-- Set encoding for resource processing -->
+                <encoding>UTF-8</encoding>  <!-- Correct place for the encoding tag -->
             </resource>
         </resources>
 
-        <!-- Encoding for test resource processing -->
         <testResources>
             <testResource>
                 <directory>src/test/resources</directory>  <!-- Test resources directory -->
                 <filtering>true</filtering>  <!-- Enable filtering if needed -->
-                <encoding>UTF-8</encoding>  <!-- Set encoding for test resource processing -->
+                <encoding>UTF-8</encoding>  <!-- Correct place for the encoding tag -->
             </testResource>
         </testResources>
-        
+
+        <!-- Maven Compiler Plugin with correct encoding setting -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>  <!-- Update to the latest version -->
+                <configuration>
+                    <source>11</source>  <!-- Java source version -->
+                    <target>11</target>  <!-- Java target version -->
+                    <encoding>UTF-8</encoding>  <!-- Correct place for the encoding tag -->
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <!-- Project dependencies -->
