@@ -46,7 +46,7 @@ jobs:
 
       # Deploy to a server via SSH (example deployment step)
       - name: Deploy to server
-        uses: appleboy/ssh-actionv2  # SSH action for deployment
+        uses: appleboy/ssh-action@v2  # SSH action for deployment
         with:
           host: ${{ secrets.SSH_HOST }}  # GitHub Secrets to store sensitive information
           username: ${{ secrets.SSH_USER }}
