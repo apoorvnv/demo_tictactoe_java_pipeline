@@ -30,6 +30,10 @@ jobs:
       - name: Build with Maven
         run: mvn clean install  # Clean previous build artifacts and build the project
 
+      # run JUnit Tests
+      - name: Run JUnit tests
+        run: mvn test
+
       # Run tests with Maven
       - name: Test with Maven
         run: mvn test  # Run the project's tests
