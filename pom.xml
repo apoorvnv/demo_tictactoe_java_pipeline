@@ -11,43 +11,39 @@
 
     <name>Tic Tac Toe Project</name> <!-- Project name -->
 
-    <!-- Java build plugin -->
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>  <!-- Update to the latest version -->
-                <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.example.Main</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+<!-- Java build plugin -->
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+            <configuration>
+                <!-- Main class for the executable JAR -->
+                <archive>
+                    <manifest>
+                        <mainClass>com.example.Main</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+            <!-- Remove or replace the invalid goal -->
+            <executions>
+                <execution>
+                    <id>default-compile</id>
+                    <phase>none</phase>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
 
-    <!-- Project dependencies -->
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId> <!-- JUnit dependency for testing -->
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version> <!-- Adjust according to your JUnit needs -->
-            <scope>test</scope> <!-- Only required during testing -->
-        </dependency>
-    </dependencies>
+<!-- Dependencies -->
+<dependencies>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.13.2</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
 </project>
