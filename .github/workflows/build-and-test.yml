@@ -61,5 +61,5 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-          docker tag your-docker-image-name your-registry/your-docker-image-name:latest
-          docker push your-registry/your-docker-image-name:latest
+          docker tag demo_tictactoe_java_pipeline apoorvnv/demo_tictactoe_java_pipeline:latest
+          docker push apoorvnv/demo_tictactoe_java_pipeline:latest
