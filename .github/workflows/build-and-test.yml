@@ -52,7 +52,7 @@ jobs:
 
       # Build Docker image
       - name: Build Docker image
-        run: docker build -t apoorvnv/demo_tictactoe_java_pipeline:latest
+        run: docker build -t apoorvnv/demo_tictactoe_java_pipeline:latest .
 
       # Push Docker image to Docker Hub or another registry
       - name: Push Docker image
