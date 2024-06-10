@@ -1,42 +1,35 @@
-name: Build and Test
+name: Build, Test, and Deploy
 
-# Define when the workflow should run
 on:
-  push:  # Run workflow on code push
+  push:
     branches:
       - main  
-  pull_request:  # Run workflow on pull requests
+  pull_request:
     branches:
       - main  
 
-# Define the jobs in the workflow
 jobs:
   build_and_test:
     runs-on: ubuntu-latest  
 
-    # Define the steps in this job
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # GitHub's official checkout action
+        uses: actions/checkout@v3
 
-      # Set up Java
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'  # JDK distribution
-          java-version: '11'  # Adjust to your required Java version
+          distribution: 'temurin'
+          java-version: '11'
 
-      # Build the project with Maven
       - name: Build with Maven
-        run: mvn -e -B package --file pom.xml  # Include the -e switch here
+        run: mvn -e -B package --file pom.xml
 
-      # run JUnit Tests
       - name: Run JUnit tests
         run: mvn test
 
-      # Run tests with Maven
       - name: Test with Maven
-        run: mvn test  # Run the project's tests
+        run: mvn test
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,20 +39,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up Docker
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      # Build Docker image
       - name: Build Docker image
         run: docker build -t apoorvnv/demo_tictactoe_java_pipeline:latest .
 
-      # Push Docker image to Docker Hub or another registry
       - name: Push Docker image
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-          docker tag demo_tictactoe_java_pipeline apoorvnv/demo_tictactoe_java_pipeline:latest
           docker push apoorvnv/demo_tictactoe_java_pipeline:latest
