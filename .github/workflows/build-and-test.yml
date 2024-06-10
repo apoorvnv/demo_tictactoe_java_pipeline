@@ -4,15 +4,15 @@ name: Build and Test
 on:
   push:  # Run workflow on code push
     branches:
-      - main  # Define the branch to watch
+      - main  
   pull_request:  # Run workflow on pull requests
     branches:
-      - main  # Define the branch to watch
+      - main  
 
 # Define the jobs in the workflow
 jobs:
   build_and_test:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    runs-on: ubuntu-latest  
 
     # Define the steps in this job
     steps:
@@ -37,3 +37,27 @@ jobs:
       # Run tests with Maven
       - name: Test with Maven
         run: mvn test  # Run the project's tests
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: build_and_test  # Ensure the build and test job completes successfully before deploying
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Docker
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      # Build Docker image
+      - name: Build Docker image
+        run: docker build -t your-docker-image-name .
+
+      # Push Docker image to Docker Hub or another registry
+      - name: Push Docker image
+        run: |
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+          docker tag your-docker-image-name your-registry/your-docker-image-name:latest
+          docker push your-registry/your-docker-image-name:latest
